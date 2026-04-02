@@ -1,0 +1,16 @@
+{
+  "name": "sthiti-ai",
+  "version": "1.0.0",
+  "description": "Humanitarian AI for street distress detection",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "mongoose": "^9.3.3",
+    "sqlite3": "^6.0.1"
+  }
+}

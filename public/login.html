@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sthiti AI | Gateway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D97706; /* Warm Amber */
+            --secondary: #451a03; /* Deep Brown */
+            --bg-cream: #FDFBF7;
+            --glass: rgba(255, 255, 255, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5e6d3 100%);
+            background-image: url("https://www.transparenttextures.com/patterns/p6.png"); 
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .brand-overlay {
+            position: absolute;
+            top: 40px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hindi-root {
+            background: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.3);
+        }
+
+        h1 { font-family: 'Playfair Display', serif; margin-top: 15px; color: var(--secondary); font-size: 2.2rem; }
+
+        .gateway-container {
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+            z-index: 2;
+        }
+
+        .auth-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .auth-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px -12px rgba(217, 119, 6, 0.15);
+        }
+
+        .icon-circle {
+            width: 60px; height: 60px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            border: 1px solid #eee;
+        }
+
+        h2 { font-family: 'Playfair Display', serif; margin-bottom: 10px; color: var(--secondary); }
+        p { color: #6b7280; font-size: 0.9rem; margin-bottom: 25px; line-height: 1.5; }
+
+        .auth-form, .input-group { display: flex; flex-direction: column; gap: 12px; }
+
+        input {
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            background: rgba(255, 255, 255, 0.6);
+            outline: none;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .btn {
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        .btn-user { background: var(--secondary); color: white; }
+        .btn-user:hover { filter: brightness(1.2); }
+
+        .btn-ngo-access {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-ngo-access:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(217, 119, 6, 0.4);
+            filter: brightness(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .gateway-container { grid-template-columns: 1fr; }
+            body { height: auto; padding: 120px 0; overflow-y: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="brand-overlay">
+        <span class="hindi-root">स्थि</span>
+        <h1>Sthiti AI</h1>
+    </div>
+
+    <div class="gateway-container">
+        <div class="auth-card">
+            <div>
+                <div class="icon-circle">👤</div>
+                <h2>Citizen Login</h2>
+                <p>Report incidents and help AI identify street distress in your neighborhood.</p>
+            </div>
+            <div class="auth-form">
+                <input type="text" id="phone" placeholder="Phone Number">
+                <input type="password" id="pass" placeholder="OTP / Password">
+                <button onclick="handleCitizenLogin()" class="btn btn-user">Enter Sthiti AI</button>
+            </div>
+        </div>
+
+        <div class="auth-card">
+            <div>
+                <div class="icon-circle">🏢</div>
+                <h2>NGO Member</h2>
+                <p>Access the humanitarian dashboard to manage cases and dispatch aid.</p>
+            </div>
+            <div class="input-group">
+                <input type="email" id="ngoEmail" placeholder="Organization Email">
+                <input type="password" id="ngoKey" placeholder="Access Key">
+                <button class="btn btn-ngo-access btn" onclick="loginNGO()">
+                    ACCESS DASHBOARD
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleCitizenLogin() {
+            // Add your logic or simple redirect
+            window.location.href = "/dashboard";
+        }
+
+        function loginNGO() {
+            const email = document.getElementById('ngoEmail').value;
+            const key = document.getElementById('ngoKey').value;
+
+            if (email !== "" && key !== "") {
+                window.location.href = "/ngo.html";
+            } else {
+                alert("Please enter your NGO credentials.");
+            }
+        }
+    </script>
+</body>
+</html>
